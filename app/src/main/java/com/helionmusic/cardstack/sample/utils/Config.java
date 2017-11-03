@@ -1,6 +1,6 @@
-package com.mutualmobile.cardstack.sample.utils;
+package com.helionmusic.cardstack.sample.utils;
 
-import com.mutualmobile.cardstack.sample.BuildConfig;
+import com.helionmusic.cardstack.sample.BuildConfig;
 
 public class Config {
     public static final boolean IS_RELEASE = !BuildConfig.DEBUG;

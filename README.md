@@ -34,7 +34,7 @@ dependencies {
 Usage
 -----
 ```xml
-<com.mutualmobile.cardstack.CardStackLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.helionmusic.cardstack.CardStackLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_stack="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardStack"
     android:layout_width="match_parent"

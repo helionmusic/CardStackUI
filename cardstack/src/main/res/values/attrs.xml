@@ -6,5 +6,6 @@
         <attr name="card_gap" format="dimension" />
         <attr name="card_gap_bottom" format="dimension" />
         <attr name="showInitAnimation" format="boolean" />
+        <attr name="card_margin_bottom" format="dimension"/>
     </declare-styleable>
 </resources>

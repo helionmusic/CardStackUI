@@ -1,8 +1,8 @@
-package com.mutualmobile.cardstack.sample;
+package com.helionmusic.cardstack.sample;
 
 import android.content.Context;
 
-import com.mutualmobile.cardstack.CardStackLayout;
+import com.helionmusic.cardstack.CardStackLayout;
 import com.tramsun.libs.prefcompat.Pref;
 
 public class Prefs {
@@ -24,7 +24,7 @@ public class Prefs {
     }
 
     public static int getParallaxScale(Context context) {
-        return Pref.getInt(PARALLAX_SCALE, context.getResources().getInteger(com.mutualmobile.cardstack.R.integer.parallax_scale_default));
+        return Pref.getInt(PARALLAX_SCALE, context.getResources().getInteger(com.helionmusic.cardstack.R.integer.parallax_scale_default));
     }
 
     public static int getCardGap(Context context) {
@@ -44,7 +44,7 @@ public class Prefs {
         Pref.putBoolean(SHOW_INIT_ANIMATION, CardStackLayout.SHOW_INIT_ANIMATION_DEFAULT);
         Pref.putBoolean(PARALLAX_ENABLED, CardStackLayout.PARALLAX_ENABLED_DEFAULT);
         setReverseClickAnimationEnabled(REVERSE_CLICK_ANIMATION_ENABLED_DEFAULT);
-        Pref.putInt(PARALLAX_SCALE, context.getResources().getInteger(com.mutualmobile.cardstack.R.integer.parallax_scale_default));
+        Pref.putInt(PARALLAX_SCALE, context.getResources().getInteger(com.helionmusic.cardstack.R.integer.parallax_scale_default));
         Pref.putInt(CARD_GAP, cardGapDimenInDp);
         Pref.putInt(CARD_GAP_BOTTOM, cardGapBottomDimenInDp);
     }

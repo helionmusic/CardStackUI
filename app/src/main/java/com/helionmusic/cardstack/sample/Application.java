@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack.sample;
+package com.helionmusic.cardstack.sample;
 
 import com.tramsun.libs.prefcompat.Pref;
 

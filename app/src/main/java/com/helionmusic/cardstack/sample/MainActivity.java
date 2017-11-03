@@ -1,12 +1,13 @@
-package com.mutualmobile.cardstack.sample;
+package com.helionmusic.cardstack.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mutualmobile.cardstack.CardStackLayout;
-import com.mutualmobile.cardstack.sample.interfaces.OnRestartRequest;
-import com.mutualmobile.cardstack.sample.utils.Logger;
-import com.mutualmobile.cardstack.utils.Units;
+import com.helionmusic.cardstack.CardStackLayout;
+import com.helionmusic.cardstack.sample.interfaces.OnRestartRequest;
+import com.helionmusic.cardstack.sample.utils.Logger;
+import com.helionmusic.cardstack.utils.Units;
+
 
 public class MainActivity extends AppCompatActivity implements OnRestartRequest {
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnRestartRequest 
 
         mCardStackLayout.setCardGap(Units.dpToPx(this, Prefs.getCardGap(this)));
         mCardStackLayout.setCardGapBottom(Units.dpToPx(this, Prefs.getCardGapBottom(this)));
+        //mCardStackLayout.setCardMarginBottom(Units.dpToPx(this, 50));
 
         mCardStackLayout.setAdapter(new MyCardStackAdapter(this));
     }

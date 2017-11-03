@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack;
+package com.helionmusic.cardstack;
 
 import android.annotation.SuppressLint;
 import android.widget.FrameLayout;

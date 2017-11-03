@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack;
+package com.helionmusic.cardstack;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -30,6 +30,7 @@ public class CardStackLayout extends ScrollView {
 
     private float mCardGapBottom;
     private float mCardGap;
+    private float mMarginBottom;
     private boolean mShowInitAnimation;
     private boolean mParallaxEnabled;
     private int mParallaxScale;
@@ -69,6 +70,7 @@ public class CardStackLayout extends ScrollView {
             mParallaxEnabled = a.getBoolean(R.styleable.CardStackLayout_parallax_enabled, PARALLAX_ENABLED_DEFAULT);
             mShowInitAnimation = a.getBoolean(R.styleable.CardStackLayout_showInitAnimation, SHOW_INIT_ANIMATION_DEFAULT);
             mParallaxScale = a.getInteger(R.styleable.CardStackLayout_parallax_scale, getResources().getInteger(R.integer.parallax_scale_default));
+            mMarginBottom = a.getDimension(R.styleable.CardStackLayout_card_margin_bottom, getResources().getDimension(R.dimen.card_margin_bottom));
             mCardGap = a.getDimension(R.styleable.CardStackLayout_card_gap, getResources().getDimension(R.dimen.card_gap));
             mCardGapBottom = a.getDimension(R.styleable.CardStackLayout_card_gap_bottom, getResources().getDimension(R.dimen.card_gap_bottom));
             a.recycle();
@@ -78,12 +80,14 @@ public class CardStackLayout extends ScrollView {
             mParallaxScale = getResources().getInteger(R.integer.parallax_scale_default);
             mCardGap = getResources().getDimension(R.dimen.card_gap);
             mCardGapBottom = getResources().getDimension(R.dimen.card_gap_bottom);
+            mMarginBottom = getResources().getDimension(R.dimen.card_margin_bottom);
         }
 
         setFillViewport(true);
         setVerticalScrollBarEnabled(false);
 
         mFrame = new CardFrameLayout(this);
+        mFrame.requestLayout();
 
         addView(mFrame, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
@@ -155,6 +159,7 @@ public class CardStackLayout extends ScrollView {
      * @param adapter Should extend {@link CardStackAdapter}
      */
     public void setAdapter(CardStackAdapter adapter) {
+        requestLayout();
         this.mAdapter = adapter;
         mAdapter.setAdapterParams(this);
         for (int i = 0; i < mAdapter.getCount(); i++) {
@@ -225,6 +230,17 @@ public class CardStackLayout extends ScrollView {
 
     public void setCardGapBottom(float mCardGapBottom) {
         this.mCardGapBottom = mCardGapBottom;
+    }
+
+    /**
+     * @return margin to set the bottom of the screen
+     */
+    public float getCardMarginBottom() {
+        return mMarginBottom;
+    }
+
+    public void setCardMarginBottom(float mMarginBottom) {
+        this.mMarginBottom = mMarginBottom;
     }
 
     /**

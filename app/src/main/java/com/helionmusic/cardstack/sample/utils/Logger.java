@@ -1,13 +1,13 @@
-package com.mutualmobile.cardstack.sample.utils;
+package com.helionmusic.cardstack.sample.utils;
 
 import android.util.Log;
 
 import java.io.Serializable;
 
-import static com.mutualmobile.cardstack.sample.utils.Config.LOG_DETAILED;
-import static com.mutualmobile.cardstack.sample.utils.Config.LOG_LEVEL;
-import static com.mutualmobile.cardstack.sample.utils.Config.LOG_LEVEL_DEBUG;
-import static com.mutualmobile.cardstack.sample.utils.Config.LOG_LEVEL_ERROR;
+import static com.helionmusic.cardstack.sample.utils.Config.LOG_DETAILED;
+import static com.helionmusic.cardstack.sample.utils.Config.LOG_LEVEL;
+import static com.helionmusic.cardstack.sample.utils.Config.LOG_LEVEL_DEBUG;
+import static com.helionmusic.cardstack.sample.utils.Config.LOG_LEVEL_ERROR;
 
 public class Logger implements Serializable {
     String TAG;

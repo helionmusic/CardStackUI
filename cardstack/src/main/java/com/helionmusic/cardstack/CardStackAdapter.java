@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack;
+package com.helionmusic.cardstack;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -10,8 +10,10 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
     private boolean mParallaxEnabled;
     private boolean mShowInitAnimation;
     private int mFullCardHeight;
+    private int mParentHeight;
 
     private CardStackLayout mScrollParent;
     private FrameLayout mFrame;
@@ -71,7 +74,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
     }
 
     public int getFullCardHeight() {
-        return mFullCardHeight;
+        return mFullCardHeight - (int) mScrollParent.getCardMarginBottom();
     }
 
     protected float getCardGapBottom() {
@@ -119,6 +122,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
 
         mCardPaddingInternal = root.getPaddingTop();
 
+        updateParentHeight();
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mFullCardHeight);
         root.setLayoutParams(lp);
         if (mShowInitAnimation) {
@@ -135,7 +139,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
     }
 
     protected float getCardFinalY(int position) {
-        return mScreenHeight - dp30 - ((getCount() - position) * mCardGapBottom) - mCardPaddingInternal;
+        return mParentHeight - dp30 - ((getCount() - position) * mCardGapBottom) - mCardPaddingInternal;
     }
 
     protected float getCardOriginalY(int position) {
@@ -233,6 +237,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
         setScreenTouchable(false);
 
         mScrollParent.setScrollingEnabled(false);
+        updateParentHeight();
         if (mSelectedCardPosition == INVALID_CARD_POSITION) {
             mSelectedCardPosition = (int) v.getTag(R.id.cardstack_internal_position_tag);
 
@@ -301,6 +306,14 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
      */
     void setAdapterParams(CardStackLayout cardStackLayout) {
         mScrollParent = cardStackLayout;
+        ViewParent parentView = cardStackLayout.getParent();
+        parentView.requestLayout();
+        View rootView = (View) parentView;
+        rootView.requestLayout();
+
+        mParentHeight = rootView.getHeight();
+
+
         mFrame = cardStackLayout.getFrame();
 
         mCardViews = new View[getCount()];
@@ -314,7 +327,9 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
         mShowInitAnimation = cardStackLayout.isShowInitAnimation();
 
         mParentPaddingTop = cardStackLayout.getPaddingTop();
-        mFullCardHeight = (int) (mScreenHeight - dp30 - getCount() * mCardGapBottom);
+        mFullCardHeight = (int) (mParentHeight
+                - cardStackLayout.getPaddingBottom()
+                - getCount() * mCardGapBottom);
     }
 
     /**
@@ -355,5 +370,9 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
         if (mCardViews == null) return null;
 
         return mCardViews[position];
+    }
+
+    public void updateParentHeight() {
+        mParentHeight = mScrollParent.getHeight();
     }
 }

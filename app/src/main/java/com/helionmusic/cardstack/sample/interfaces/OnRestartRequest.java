@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack.sample.interfaces;
+package com.helionmusic.cardstack.sample.interfaces;
 
 public interface OnRestartRequest {
     void requestRestart();

@@ -1,4 +1,4 @@
-package com.mutualmobile.cardstack.sample;
+package com.helionmusic.cardstack.sample;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -15,9 +15,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.mutualmobile.cardstack.CardStackAdapter;
-import com.mutualmobile.cardstack.sample.interfaces.OnRestartRequest;
-import com.mutualmobile.cardstack.sample.utils.Logger;
+import com.helionmusic.cardstack.CardStackAdapter;
+import com.helionmusic.cardstack.sample.interfaces.OnRestartRequest;
+import com.helionmusic.cardstack.sample.utils.Logger;
 import com.tramsun.libs.prefcompat.Pref;
 
 public class MyCardStackAdapter extends CardStackAdapter implements CompoundButton.OnCheckedChangeListener {
